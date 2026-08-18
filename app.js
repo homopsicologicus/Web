@@ -4,48 +4,67 @@
   var root = document.documentElement;
   var STORAGE_KEY = "hp-theme";
 
-  /* ---- Theme toggle (system → explicit override, both directions) ---- */
-  function applyTheme(theme) {
+  function isDark() {
+    return root.getAttribute("data-theme") === "dark";
+  }
+
+  function setTheme(theme) {
     if (theme) {
       root.setAttribute("data-theme", theme);
     } else {
       root.removeAttribute("data-theme");
     }
+    updateToggleUI();
+  }
+
+  function currentTheme() {
+    var attr = root.getAttribute("data-theme");
+    if (attr === "dark" || attr === "light") return attr;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function updateToggleUI() {
     var btn = document.querySelector(".theme-toggle");
-    if (btn) {
-      var dark = theme ? theme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
-      btn.setAttribute("aria-pressed", String(dark));
-    }
+    if (!btn) return;
+    var dark = isDark();
+    btn.setAttribute("aria-pressed", String(dark));
+    var icon = btn.querySelector(".theme-toggle-icon");
+    if (icon) icon.textContent = dark ? "\u2600" : "\u263E";
+    btn.setAttribute("aria-label", dark ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
+    btn.title = dark ? "Cambiar a tema claro" : "Cambiar a tema oscuro";
   }
 
-  var saved = null;
-  try {
-    saved = localStorage.getItem(STORAGE_KEY);
-  } catch (e) { /* storage unavailable */ }
-  applyTheme(saved);
+  /* Si el script inline del <head> no aplicó tema, aplica el guardado */
+  if (!root.getAttribute("data-theme")) {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved);
+    } catch (e) { /* storage unavailable */ }
+  }
+  updateToggleUI();
 
-  var toggleBtn = document.querySelector(".theme-toggle");
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", function () {
-      var current = root.getAttribute("data-theme");
-      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      var next;
-      if (!current) {
-        next = prefersDark ? "light" : "dark";
-      } else {
-        next = current === "dark" ? "light" : "dark";
+  function toggle() {
+    var next = currentTheme() === "dark" ? "light" : "dark";
+    setTheme(next);
+    try {
+      localStorage.setItem(STORAGE_KEY, next);
+    } catch (e) { /* storage unavailable */ }
+  }
+
+  /* Clic directo + delegation como respaldo */
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    while (t && t !== document) {
+      if (t.classList && t.classList.contains("theme-toggle")) {
+        toggle();
+        return;
       }
-      applyTheme(next);
-      try {
-        localStorage.setItem(STORAGE_KEY, next);
-      } catch (e) { /* storage unavailable */ }
-    });
-  }
-
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
-    if (!root.getAttribute("data-theme")) {
-      applyTheme(null);
+      t = t.parentNode;
     }
+  });
+
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+    if (!root.getAttribute("data-theme")) updateToggleUI();
   });
 
   /* ---- Reveal on scroll ---- */

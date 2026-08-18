@@ -130,7 +130,9 @@ body {
   background: var(--base);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-}/* ============ LAYOUT / TYPOGRAPHY ============ */
+  transition: background-color var(--dur-slow) var(--ease), color var(--dur-slow) var(--ease);
+}
+/* ============ LAYOUT / TYPOGRAPHY ============ */
 .container { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 var(--space-l); }
 
 a { color: var(--accent); text-decoration: none; }

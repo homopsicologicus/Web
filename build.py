@@ -22,6 +22,17 @@ SOCIALS = [
 ]
 
 
+THEME_INLINE = """<script>
+    (function () {
+      var t;
+      try { t = localStorage.getItem("hp-theme"); } catch (e) {}
+      if (t === "dark" || t === "light") {
+        document.documentElement.setAttribute("data-theme", t);
+      }
+    })();
+  </script>"""
+
+
 def head(title, desc, current):
     nav_links = "\n        ".join(
         f'<a href="{href}" {"aria-current=\"page\" " if key == current else ""}>'
@@ -38,6 +49,7 @@ def head(title, desc, current):
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  {THEME_INLINE}
   <script src="app.js" defer></script>
 </head>
 <body class="grain">
