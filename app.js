@@ -28,8 +28,6 @@
     if (!btn) return;
     var dark = isDark();
     btn.setAttribute("aria-pressed", String(dark));
-    var icon = btn.querySelector(".theme-toggle-icon");
-    if (icon) icon.textContent = dark ? "\u2600" : "\u263E";
     btn.setAttribute("aria-label", dark ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
     btn.title = dark ? "Cambiar a tema claro" : "Cambiar a tema oscuro";
   }

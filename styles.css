@@ -171,11 +171,14 @@ p { max-width: 68ch; text-wrap: pretty; }
 .theme-toggle {
   width: 2.5rem; height: 2.5rem; display: inline-flex; align-items: center; justify-content: center;
   border: var(--border); border-radius: var(--radius); background: transparent; color: var(--ink-2);
-  cursor: pointer; font-size: var(--step-1);
+  cursor: pointer;
   transition: transform var(--dur-fast) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
 .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
 .theme-toggle:active { transform: scale(0.94); }
+.theme-toggle .theme-icon--moon { display: none; }
+.theme-toggle[aria-pressed="true"] .theme-icon--sun { display: none; }
+.theme-toggle[aria-pressed="true"] .theme-icon--moon { display: inline; }
 
 /* ============ BUTTONS (all five states) ============ */
 .btn {
