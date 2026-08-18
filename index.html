@@ -3,128 +3,273 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Psic. Carlos Camacho — Psicólogo</title>
-  <meta name="description" content="Blog profesional del Psic. Carlos Camacho. Escritos y reflexiones de psicología, perfil académico y trayectoria profesional.">
+  <title>Homo Psicologicus — Psicología para la comunidad</title>
+  <meta name="description" content="Homo Psicologicus. Un proyecto de psicología orientado al aporte a la comunidad académica, científica, laboral y de mentoría.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
 </head>
-<body>
+<body class="grain">
 
   <a class="skip-link" href="#main">Saltar al contenido</a>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#top">Psic. <span>Carlos Camacho</span></a>
+      <a class="brand" href="#top">Homo <em>Psicologicus</em></a>
       <nav class="site-nav" aria-label="Principal">
+        <a href="#aportes">Aportes</a>
+        <a href="#brujula">Brújula Joven</a>
         <a href="#escritos">Escritos</a>
-        <a href="#academia">Academia</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#innovacion">Innovación</a>
+        <a href="#video">Video</a>
+        <a href="#sobre-mi">Sobre mí</a>
       </nav>
-      <a class="btn btn-outline btn-sm" href="https://www.linkedin.com/in/carloscamachot" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Cambiar tema claro u oscuro" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+        </button>
+        <a class="btn btn-primary btn-sm" href="https://www.linkedin.com/in/carloscamachot" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
   </header>
 
   <main id="main">
+
+    <!-- HERO -->
     <section id="top" class="hero">
       <div class="container">
-        <p class="hero-eyebrow">Psicólogo — [Área profesional por definir]</p>
-        <h1 class="hero-title">
-          <span class="hero-name">Psic. Carlos Camacho</span>
+        <p class="hero-eyebrow reveal" style="--i:0">Un proyecto de psicología para la comunidad</p>
+        <h1 class="hero-title reveal" style="--i:1">
+          Homo <em>Psicologicus</em>
         </h1>
-        <div class="hero-rule" aria-hidden="true"></div>
-        <p class="hero-sub">
-          [Breve línea de presentación: tu enfoque, tu propósito y a quién acompañas.
-          Escríbemela y la colocamos aquí.]
+        <div class="hero-rule reveal" style="--i:2" aria-hidden="true"></div>
+        <p class="hero-sub reveal" style="--i:3">
+          Pensar la psicología como ciencia, oficio y compromiso humano.
+          Un espacio para aportar a la comunidad académica, científica,
+          laboral y de mentoría.
         </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#escritos">Leer escritos</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/carloscamachot" target="_blank" rel="noopener">Ver perfil de LinkedIn</a>
+        <div class="hero-actions reveal" style="--i:4">
+          <a class="btn btn-primary" href="#aportes">Explorar los aportes</a>
+          <a class="btn btn-ghost" href="https://universidadnacionalhermiliovaldizan.academia.edu/CarlosDCamachoT" target="_blank" rel="noopener">Perfil académico</a>
         </div>
       </div>
     </section>
 
-    <section id="escritos" class="section">
+    <!-- 01 APORTES -->
+    <section id="aportes" class="section">
       <div class="container">
         <div class="section-head">
           <span class="section-index" aria-hidden="true">01</span>
-          <h2 class="section-title">Escritos</h2>
+          <h2 class="section-title">Aportes</h2>
         </div>
         <p class="section-intro">
-          Reflexiones, artículos y notas sobre psicología. Aquí se mostrarán tus textos,
-          cada uno con su enlace de lectura. Rellena o elimina las tarjetas que quieras.
+          Cuatro líneas desde las que trabajar por la comunidad. Cada una
+          convierte el conocimiento psicológico en algo útil para otros.
         </p>
-        <div class="writing-grid">
-          <article class="writing-card">
-            <span class="writing-tag">Artículo</span>
-            <h3 class="writing-title"><a href="#">[Título de tu escrito]</a></h3>
-            <p class="writing-excerpt">[Resumen de una o dos líneas sobre el contenido de este texto.]</p>
-            <a class="writing-link" href="#">Leer más →</a>
+        <div class="pillars">
+          <article class="pillar">
+            <span class="pillar-num" aria-hidden="true">01</span>
+            <h3 class="pillar-title">Academia</h3>
+            <p class="pillar-text">Investigación, publicación y divulgación científica. Acercar el conocimiento a quien lo necesita.</p>
           </article>
-          <article class="writing-card">
-            <span class="writing-tag">Reflexión</span>
-            <h3 class="writing-title"><a href="#">[Título de tu escrito]</a></h3>
-            <p class="writing-excerpt">[Resumen de una o dos líneas sobre el contenido de este texto.]</p>
-            <a class="writing-link" href="#">Leer más →</a>
+          <article class="pillar">
+            <span class="pillar-num" aria-hidden="true">02</span>
+            <h3 class="pillar-title">Ciencia</h3>
+            <p class="pillar-text">Rigor, evidencia y método. Pensar la psicología como disciplina basada en datos.</p>
           </article>
-          <article class="writing-card">
-            <span class="writing-tag">Nota</span>
-            <h3 class="writing-title"><a href="#">[Título de tu escrito]</a></h3>
-            <p class="writing-excerpt">[Resumen de una o dos líneas sobre el contenido de este texto.]</p>
-            <a class="writing-link" href="#">Leer más →</a>
+          <article class="pillar">
+            <span class="pillar-num" aria-hidden="true">03</span>
+            <h3 class="pillar-title">Mundo laboral</h3>
+            <p class="pillar-text">Inserción profesional, derechos laborales y desarrollo de carrera de las y los psicólogos.</p>
+          </article>
+          <article class="pillar">
+            <span class="pillar-num" aria-hidden="true">04</span>
+            <h3 class="pillar-title">Mentoría</h3>
+            <p class="pillar-text">Acompañamiento a estudiantes y jóvenes profesionales en su camino de formación.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="academia" class="section section-alt">
+    <!-- 02 BRÚJULA JOVEN -->
+    <section id="brujula" class="section section-tint">
       <div class="container">
         <div class="section-head">
           <span class="section-index" aria-hidden="true">02</span>
-          <h2 class="section-title">Perfil académico</h2>
+          <h2 class="section-title">🧭 Brújula Joven</h2>
         </div>
-        <div class="academia-block">
-          <div>
-            <p>
-              Sigo mis textos académicos y publicaciones en academia.edu. Desde allí puedes
-              consultar mi producción escrita completa, organizada por tema.
-            </p>
-            <a class="btn btn-primary" href="https://independent.academia.edu/[TU_USUARIO]" target="_blank" rel="noopener">
-              Visitar mi perfil en academia.edu
-            </a>
+        <p class="section-intro">
+          Cosas que nadie te enseña: cómo leer un paper, cómo armar un CV académico,
+          cómo pedir mentoría, cómo navegar un posgrado, cuáles son tus derechos laborales.
+          Guías prácticas, checklists y respuestas a preguntas frecuentes.
+        </p>
+        <ul class="guide-list">
+          <li>Cómo leer un paper sin rendirte a la mitad</li>
+          <li>Cómo armar un CV académico que te abra puertas</li>
+          <li>Cómo pedir mentoría (y que te respondan)</li>
+          <li>Cómo navegar un posgrado sin perder el rumbo</li>
+          <li>Derechos laborales del psicólogo: lo básico</li>
+        </ul>
+        <details class="faq" open>
+          <summary>¿Qué es Brújula Joven?</summary>
+          <div class="faq-body">
+            <p>Un espacio de guías prácticas para estudiantes y jóvenes psicólogos. Cada guía responde una pregunta real con pasos concretos, checklists y recursos.</p>
           </div>
-          <div class="academia-note">
-            <p class="academia-note-label">Enlace del perfil</p>
-            <p class="academia-note-value">[Pega aquí la URL exacta de tu perfil de academia.edu]</p>
+        </details>
+        <details class="faq">
+          <summary>¿Puedo proponer un tema para una guía?</summary>
+          <div class="faq-body">
+            <p>Sí. Escríbeme por correo o por LinkedIn con tu duda y la sumamos a la lista de próximas guías.</p>
           </div>
+        </details>
+        <details class="faq">
+          <summary>¿Las guías son gratuitas?</summary>
+          <div class="faq-body">
+            <p>Todo el contenido de Brújula Joven es y será gratuito, pensado para la comunidad.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 03 ESCRITOS -->
+    <section id="escritos" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-index" aria-hidden="true">03</span>
+          <h2 class="section-title">Escritos</h2>
+        </div>
+        <p class="section-intro">
+          Reflexiones, artículos y notas de psicología. Cada texto con su
+          categoría y su enlace de lectura. Rellena o elimina las tarjetas que quieras.
+        </p>
+        <div class="writing-grid">
+          <article class="writing-card">
+            <span class="badge">Artículo</span>
+            <h3 class="writing-title"><a href="#">[Título de tu escrito]</a></h3>
+            <p class="writing-excerpt">[Resumen de una o dos líneas sobre el contenido de este texto.]</p>
+            <a class="writing-link" href="#">Leer más →</a>
+          </article>
+          <article class="writing-card">
+            <span class="badge">Reflexión</span>
+            <h3 class="writing-title"><a href="#">[Título de tu escrito]</a></h3>
+            <p class="writing-excerpt">[Resumen de una o dos líneas sobre el contenido de este texto.]</p>
+            <a class="writing-link" href="#">Leer más →</a>
+          </article>
+          <article class="writing-card">
+            <span class="badge">Nota</span>
+            <h3 class="writing-title"><a href="#">[Título de tu escrito]</a></h3>
+            <p class="writing-excerpt">[Resumen de una o dos líneas sobre el contenido de este texto.]</p>
+            <a class="writing-link" href="#">Leer más →</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="contacto" class="section">
+    <!-- 04 COGITO, ERGO INNOVO -->
+    <section id="innovacion" class="section section-ink">
       <div class="container">
         <div class="section-head">
-          <span class="section-index" aria-hidden="true">03</span>
-          <h2 class="section-title">Contacto</h2>
+          <span class="section-index" aria-hidden="true">04</span>
+          <h2 class="section-title">Cogito, Ergo Innovo</h2>
         </div>
-        <div class="contact-block">
-          <p class="section-intro">
-            ¿Quieres escribirme? Puedes contactarme por LinkedIn o por correo.
-          </p>
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="https://www.linkedin.com/in/carloscamachot" target="_blank" rel="noopener">Escribir por LinkedIn</a>
-            <a class="btn btn-ghost" href="mailto:[tu-correo@ejemplo.com]">Enviar un correo</a>
-          </div>
+        <p class="section-intro">
+          Pienso, luego innovo. Un espacio para explorar las oportunidades
+          de la psicología en la innovación: tecnología, investigación
+          aplicada, emprendimiento y nuevos campos de trabajo.
+        </p>
+        <blockquote class="pull-quote">
+          La psicología no solo explica el mundo: también puede transformarlo.
+        </blockquote>
+        <div class="innov-grid">
+          <article class="innov-item">
+            <h3 class="innov-title">Psicología y tecnología</h3>
+            <p>UX, bienestar digital, inteligencia artificial y salud mental: campos donde el psicólogo ya es protagonista.</p>
+          </article>
+          <article class="innov-item">
+            <h3 class="innov-title">Investigación aplicada</h3>
+            <p>De la evidencia a la solución: proyectos que responden problemas reales de personas y organizaciones.</p>
+          </article>
+          <article class="innov-item">
+            <h3 class="innov-title">Emprendimiento</h3>
+            <p>Crear servicios, productos y espacios nuevos desde la disciplina. La innovación también es un oficio.</p>
+          </article>
         </div>
       </div>
     </section>
+
+    <!-- 05 VIDEO -->
+    <section id="video" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-index" aria-hidden="true">05</span>
+          <!-- CAMBIA AQUÍ EL NOMBRE DEL CANAL -->
+          <h2 class="section-title">En video</h2>
+        </div>
+        <p class="section-intro">
+          El canal de YouTube de Homo Psicologicus está en preparación.
+          Pronto, conversaciones, guías y análisis en formato video.
+        </p>
+        <div class="video-actions">
+          <!-- Sustituye el enlace por la URL real de tu canal cuando exista -->
+          <a class="btn btn-primary" href="https://www.youtube.com/" target="_blank" rel="noopener">Ver el canal</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 SOBRE MÍ -->
+    <section id="sobre-mi" class="section section-tint">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-index" aria-hidden="true">06</span>
+          <h2 class="section-title">Sobre mí</h2>
+        </div>
+        <div class="about-block">
+          <div class="about-text">
+            <p>
+              Soy el <strong>Psic. Carlos Camacho</strong>. Este proyecto busca
+              poner la psicología al servicio de la comunidad: con rigor
+              científico, calidez humana y compromiso con la formación
+              de nuevas generaciones.
+            </p>
+            <p class="about-bio-placeholder">
+              [Amplía aquí tu presentación: trayectoria, formación y lo que
+              te mueve a trabajar por la comunidad.]
+            </p>
+          </div>
+          <aside class="about-links">
+            <a class="btn btn-outline btn-block" href="https://universidadnacionalhermiliovaldizan.academia.edu/CarlosDCamachoT" target="_blank" rel="noopener">academia.edu</a>
+            <a class="btn btn-outline btn-block" href="https://www.linkedin.com/in/carloscamachot" target="_blank" rel="noopener">LinkedIn</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section section-ink">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-index" aria-hidden="true">07</span>
+          <h2 class="section-title">Contacto</h2>
+        </div>
+        <p class="section-intro">
+          ¿Quieres escribirme, proponer una guía o conversar sobre psicología
+          e innovación? Escríbeme por correo o por LinkedIn.
+        </p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/carloscamachot" target="_blank" rel="noopener">Escribir por LinkedIn</a>
+          <a class="btn btn-ghost" href="mailto:[tu-correo@ejemplo.com]">Enviar un correo</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>Psic. Carlos Camacho — Todos los derechos reservados.</p>
-      <p class="footer-meta">Blog personal · [Año]</p>
+      <p>Homo Psicologicus — Todos los derechos reservados.</p>
+      <p class="footer-meta">Proyecto de psicología para la comunidad · <span class="footer-year"></span></p>
     </div>
   </footer>
 
