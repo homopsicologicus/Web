@@ -5,7 +5,7 @@ Uso:  python build.py   (regenera todos los .html en la carpeta del sitio)
 import os
 
 SITE = os.path.dirname(os.path.abspath(__file__))
-ASSET_VER = "handhold5"  # bump en cada cambio de estilos/js para romper caché
+ASSET_VER = "handhold6"  # bump en cada cambio de estilos/js para romper caché
 
 NAV = [
     ("index.html", "Inicio", ""),
@@ -50,6 +50,11 @@ def head(title, desc, current, preload_hero=False):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
   <meta name="description" content="{desc}">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f1ed">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16130f">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
