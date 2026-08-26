@@ -5,6 +5,7 @@ Uso:  python build.py   (regenera todos los .html en la carpeta del sitio)
 import os
 
 SITE = os.path.dirname(os.path.abspath(__file__))
+ASSET_VER = "handhold1"  # bump en cada cambio de estilos/js para romper caché
 
 NAV = [
     ("index.html", "Inicio", ""),
@@ -28,8 +29,6 @@ THEME_INLINE = """<script>
       try { t = localStorage.getItem("hp-theme"); } catch (e) {}
       if (t === "dark" || t === "light") {
         document.documentElement.setAttribute("data-theme", t);
-        var b = document.querySelector(".theme-toggle");
-        if (b) { b.setAttribute("aria-pressed", t === "dark" ? "true" : "false"); }
       }
     })();
   </script>"""
@@ -50,9 +49,9 @@ def head(title, desc, current):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v={ASSET_VER}">
   {THEME_INLINE}
-  <script src="app.js" defer></script>
+  <script src="app.js?v={ASSET_VER}" defer></script>
 </head>
 <body class="grain">
 
