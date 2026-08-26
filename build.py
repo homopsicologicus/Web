@@ -5,7 +5,7 @@ Uso:  python build.py   (regenera todos los .html en la carpeta del sitio)
 import os
 
 SITE = os.path.dirname(os.path.abspath(__file__))
-ASSET_VER = "handhold3"  # bump en cada cambio de estilos/js para romper caché
+ASSET_VER = "handhold4"  # bump en cada cambio de estilos/js para romper caché
 
 NAV = [
     ("index.html", "Inicio", ""),
@@ -444,9 +444,6 @@ def build_sobre_mi():
     <section class="section section-tint" style="padding-top:0">
       <div class="container">
         <div class="about-grid">
-          <figure class="about-photo">
-            <img src="assets/img/carlos-portrait.webp?v=handhold2" alt="Psic. Carlos Camacho, de brazos cruzados" width="1100" height="1971" loading="lazy">
-          </figure>
           <div class="about-text">
             <p>
               Soy el <strong>Psic. Carlos Camacho</strong>. Homo Psicologicus busca
@@ -459,10 +456,9 @@ def build_sobre_mi():
               te mueve a trabajar por la comunidad.]
             </p>
           </div>
-          <aside class="about-links">
-            <a class="btn btn-outline btn-block" href="https://universidadnacionalhermiliovaldizan.academia.edu/CarlosDCamachoT" target="_blank" rel="noopener">academia.edu</a>
-            <a class="btn btn-outline btn-block" href="https://www.linkedin.com/in/carloscamachot" target="_blank" rel="noopener">LinkedIn</a>
-          </aside>
+          <figure class="about-photo">
+            <img src="assets/img/carlos-portrait.webp?v=handhold4" alt="Psic. Carlos Camacho, de brazos cruzados" width="1100" height="1971" loading="lazy">
+          </figure>
         </div>
       </div>
     </section>
@@ -488,6 +484,7 @@ def build_sobre_mi():
         </details>
         <div class="contact-actions" style="margin-top:var(--space-l)">
           <a class="btn btn-primary" href="https://www.linkedin.com/in/carloscamachot" target="_blank" rel="noopener">Escribir por LinkedIn</a>
+          <a class="btn btn-ghost" href="https://universidadnacionalhermiliovaldizan.academia.edu/CarlosDCamachoT" target="_blank" rel="noopener">Perfil en academia.edu</a>
           <a class="btn btn-ghost" href="mailto:[tu-correo@ejemplo.com]">Enviar un correo</a>
         </div>
       </div>
