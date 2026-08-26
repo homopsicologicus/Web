@@ -5,7 +5,7 @@ Uso:  python build.py   (regenera todos los .html en la carpeta del sitio)
 import os
 
 SITE = os.path.dirname(os.path.abspath(__file__))
-ASSET_VER = "handhold1"  # bump en cada cambio de estilos/js para romper caché
+ASSET_VER = "handhold2"  # bump en cada cambio de estilos/js para romper caché
 
 NAV = [
     ("index.html", "Inicio", ""),
@@ -34,11 +34,16 @@ THEME_INLINE = """<script>
   </script>"""
 
 
-def head(title, desc, current):
+def head(title, desc, current, preload_hero=False):
     nav_links = "\n        ".join(
         f'<a href="{href}" {"aria-current=\"page\" " if key == current else ""}>'
         f'{label}</a>' for href, label, key in NAV
     )
+    preload = ""
+    if preload_hero:
+        preload = """
+  <link rel="preload" as="image" href="assets/img/hero-marble.webp?v={v}">
+  <link rel="preload" as="image" href="assets/img/carlos-portrait.webp?v={v}">""".format(v=ASSET_VER)
     return f"""<!doctype html>
 <html lang="es">
 <head>
@@ -51,7 +56,7 @@ def head(title, desc, current):
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v={ASSET_VER}">
   {THEME_INLINE}
-  <script src="app.js?v={ASSET_VER}" defer></script>
+  <script src="app.js?v={ASSET_VER}" defer></script>{preload}
 </head>
 <body class="grain">
 
@@ -93,10 +98,10 @@ def footer():
 </html>"""
 
 
-def write_page(name, title, desc, current, body):
+def write_page(name, title, desc, current, body, preload_hero=False):
     path = os.path.join(SITE, name)
     with open(path, "w", encoding="utf-8") as f:
-        f.write(head(title, desc, current) + body + footer())
+        f.write(head(title, desc, current, preload_hero=preload_hero) + body + footer())
     print("  OK:", name)
 
 
@@ -130,6 +135,11 @@ def build_index():
           </article>"""
     body = f"""
     <section id="top" class="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img class="hero-img hero-img--a" src="assets/img/hero-marble.webp?v={ASSET_VER}" alt="" width="1920" height="1072" fetchpriority="high">
+        <img class="hero-img hero-img--b" src="assets/img/carlos-portrait.webp?v={ASSET_VER}" alt="" width="1100" height="1971" loading="lazy">
+        <div class="hero-scrim"></div>
+      </div>
       <div class="container">
         <p class="hero-eyebrow reveal" style="--i:0">Un proyecto de psicología para la comunidad</p>
         <h1 class="hero-title reveal" style="--i:1">
@@ -165,7 +175,7 @@ def build_index():
 """
     write_page("index.html", "Homo Psicologicus — Psicología para la comunidad",
                "Homo Psicologicus. Un proyecto de psicología orientado al aporte a la comunidad académica, científica, laboral y de mentoría.",
-               "", body)
+               "", body, preload_hero=True)
 
 
 def build_aportes():
@@ -435,7 +445,10 @@ def build_sobre_mi():
     body += """
     <section class="section section-tint" style="padding-top:0">
       <div class="container">
-        <div class="about-block">
+        <div class="about-grid">
+          <figure class="about-photo">
+            <img src="assets/img/carlos-portrait.webp?v=handhold2" alt="Psic. Carlos Camacho, de brazos cruzados" width="1100" height="1971" loading="lazy">
+          </figure>
           <div class="about-text">
             <p>
               Soy el <strong>Psic. Carlos Camacho</strong>. Homo Psicologicus busca

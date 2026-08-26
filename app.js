@@ -43,10 +43,15 @@
 
   function toggle() {
     var next = currentTheme() === "dark" ? "light" : "dark";
+    root.classList.add("theme-fade");
     setTheme(next);
     try {
       localStorage.setItem(STORAGE_KEY, next);
     } catch (e) { /* storage unavailable */ }
+    clearTimeout(toggle._t);
+    toggle._t = setTimeout(function () {
+      root.classList.remove("theme-fade");
+    }, 700);
   }
 
   /* Clic directo + delegation como respaldo */
@@ -64,6 +69,20 @@
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
     if (!root.getAttribute("data-theme")) updateToggleUI();
   });
+
+  /* ---- Parallax sutil del hero ---- */
+  var heroMedia = document.querySelector(".hero-media");
+  if (heroMedia && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var ticking = false;
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        heroMedia.style.transform = "translateY(" + (window.scrollY * 0.18) + "px)";
+        ticking = false;
+      });
+    }, { passive: true });
+  }
 
   /* ---- Reveal on scroll ---- */
   var revealEls = document.querySelectorAll(".reveal");

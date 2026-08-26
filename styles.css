@@ -25,7 +25,7 @@
   --space-3xl: 7rem;
   --space-section: clamp(3rem, 2rem + 5vw, 7rem);
 
-  /* COLOR — Tema claro: Handhold (monocromo papel); Tema oscuro: terracota cálido */
+  /* COLOR — Tema claro: papel crema + acentos terracota; Tema oscuro: noche terracota */
   --base: #f2f1ed;      /* paper cream */
   --surface: #ffffff;   /* white slab */
   --tint: #ecebe5;      /* section wash */
@@ -33,12 +33,12 @@
   --ink-2: #45413c;     /* secondary — 8.96:1 */
   --ink-3: #6f6a62;     /* meta — 4.75:1 */
   --line: #dbd7cd;      /* warm hairline */
-  --accent: #000000;    /* acción/tinta en claro */
-  --accent-soft: #2b2925; /* hover */
+  --accent: #b34a2b;    /* terracotta — botones, links, detalles */
+  --accent-soft: #96371b; /* hover terracotta oscuro */
   --accent-ink: #ffffff;  /* texto sobre relleno */
   --forest: #2f5b4f;    /* chips filosofía / tips */
   --terracotta: #b34a2b; /* chips IA */
-  --quote: #000000;     /* pull-quote en claro */
+  --quote: #b34a2b;     /* pull-quote en claro */
   --ink-band: #000000;  /* banda oscura */
   --ink-band-ink: #ffffff;
 
@@ -72,7 +72,7 @@
     --ink-3: #9a9183;
     --line: #352e26;
     --accent: #e0704a;
-    --accent-soft: #e0704a;
+    --accent-soft: #ec8a68;
     --accent-ink: #16130f;
     --forest: #6fa596;
     --terracotta: #e0704a;
@@ -108,12 +108,12 @@
   --ink-2: #45413c;
   --ink-3: #6f6a62;
   --line: #dbd7cd;
-  --accent: #000000;
-  --accent-soft: #2b2925;
+  --accent: #b34a2b;
+  --accent-soft: #96371b;
   --accent-ink: #ffffff;
   --forest: #2f5b4f;
   --terracotta: #b34a2b;
-  --quote: #000000;
+  --quote: #b34a2b;
   --ink-band: #000000;
   --ink-band-ink: #ffffff;
 }
@@ -229,7 +229,7 @@ p { max-width: 68ch; text-wrap: pretty; }
 .section-ink { background: var(--ink-band); color: var(--ink-band-ink); }
 
 .section-head { display: flex; align-items: baseline; gap: var(--space-m); margin-bottom: var(--space-m); }
-.section-index { font-family: var(--font-display); font-style: italic; font-size: var(--step-2); color: var(--ink-3); }
+.section-index { font-family: var(--font-display); font-style: italic; font-size: var(--step-2); color: var(--accent); }
 .section-title { font-size: var(--step-3); }
 .section-ink .section-title { color: var(--ink-band-ink); }
 .section-ink .section-index { color: var(--ink-band-ink); }
@@ -240,7 +240,7 @@ p { max-width: 68ch; text-wrap: pretty; }
 /* ============ PILLARS ============ */
 .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: var(--space-l); }
 .pillar { background: var(--surface); border: var(--border); border-radius: var(--radius-card); padding: var(--space-l); }
-.pillar-num { display: block; font-family: var(--font-display); font-style: italic; color: var(--ink-3); font-size: var(--step--1); letter-spacing: 0.08em; margin-bottom: var(--space-2xs); }
+.pillar-num { display: block; font-family: var(--font-display); font-style: italic; color: var(--accent); font-size: var(--step--1); letter-spacing: 0.08em; margin-bottom: var(--space-2xs); }
 .pillar-title { font-size: var(--step-2); margin-bottom: var(--space-2xs); }
 .pillar-text { color: var(--ink-2); font-size: var(--step-0); }
 /* ============ BRUJULA JOVEN ============ */
@@ -277,7 +277,6 @@ p { max-width: 68ch; text-wrap: pretty; }
 .video-actions { display: flex; flex-wrap: wrap; gap: var(--space-s); }
 
 /* ============ SOBRE MI ============ */
-.about-block { display: grid; grid-template-columns: 3fr 1fr; gap: var(--space-2xl); align-items: start; }
 .about-text p { color: var(--ink-2); margin-bottom: var(--space-m); }
 .about-text strong { color: var(--ink); }
 .about-bio-placeholder { font-style: italic; color: var(--ink-3); }
@@ -298,7 +297,6 @@ p { max-width: 68ch; text-wrap: pretty; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 900px) {
-  .about-block { grid-template-columns: 1fr; gap: var(--space-l); }
   .site-nav { gap: var(--space-s); }
 }
 
@@ -387,3 +385,72 @@ p { max-width: 68ch; text-wrap: pretty; }
 .page-header .section-index { display: inline-block; margin-right: var(--space-xs); }
 .page-header h1 { font-size: var(--step-4); margin-bottom: var(--space-s); }
 .page-header p { color: var(--ink-2); max-width: 62ch; }
+
+/* ============ HERO CON CROSSFADE ============ */
+.hero { position: relative; min-height: 88svh; display: flex; align-items: flex-end; overflow: hidden; padding: 0; }
+.hero-media { position: absolute; inset: -12% 0; will-change: transform; }
+.hero-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0;
+  filter: brightness(1);
+  transition: filter var(--dur-slow) var(--ease);
+}
+.hero-img--a { object-position: center; animation: herofade 12s ease-in-out infinite; }
+.hero-img--b { object-position: 50% 18%; animation: herofade 12s ease-in-out infinite 6s; }
+@keyframes herofade {
+  0%   { opacity: 0; transform: scale(1); }
+  10%  { opacity: 1; }
+  45%  { opacity: 1; transform: scale(1.05); }
+  55%  { opacity: 1; }
+  100% { opacity: 0; transform: scale(1); }
+}
+.hero-scrim {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(to top, var(--base) 6%, color-mix(in oklch, var(--base) 72%, transparent) 34%, transparent 68%);
+}
+.hero .container { position: relative; z-index: 2; width: 100%; padding-top: var(--space-3xl); padding-bottom: var(--space-3xl); }
+
+@media (prefers-color-scheme: dark) {
+  .hero-img { filter: brightness(0.82); }
+}
+:root[data-theme="dark"] .hero-img { filter: brightness(0.82); }
+
+/* ============ FOTO SOBRE MI ============ */
+.about-grid { display: grid; grid-template-columns: minmax(200px, 280px) 1fr auto; gap: var(--space-xl); align-items: start; }
+.about-photo { border-radius: var(--radius-card); overflow: hidden; border: var(--border); margin: 0; }
+.about-photo img {
+  display: block; width: 100%; aspect-ratio: 4 / 5; height: auto;
+  object-fit: cover; object-position: 50% 15%;
+  filter: brightness(1);
+  transition: filter var(--dur-slow) var(--ease);
+}
+@media (prefers-color-scheme: dark) {
+  .about-photo img { filter: brightness(0.85); }
+}
+:root[data-theme="dark"] .about-photo img { filter: brightness(0.85); }
+
+/* ============ TRANSICION SUAVE DE TEMA ============ */
+html.theme-fade,
+html.theme-fade *,
+html.theme-fade *::before,
+html.theme-fade *::after {
+  transition: background-color 600ms ease, background 600ms ease,
+              color 600ms ease, border-color 600ms ease,
+              fill 600ms ease, stroke 600ms ease,
+              filter 600ms ease, opacity 600ms ease !important;
+}
+
+@media (max-width: 700px) {
+  .hero { min-height: 74svh; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { max-width: 320px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-img { animation: none !important; }
+  .hero-img--a { opacity: 1 !important; }
+  .hero-img--b { opacity: 0 !important; }
+  html.theme-fade *, html.theme-fade *::before, html.theme-fade *::after { transition-duration: 0.01ms !important; }
+}
+
