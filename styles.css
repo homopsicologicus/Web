@@ -391,18 +391,9 @@ p { max-width: 68ch; text-wrap: pretty; }
 .hero-media { position: absolute; inset: -12% 0; will-change: transform; }
 .hero-img {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; opacity: 0;
+  object-fit: cover; object-position: center;
   filter: brightness(1);
   transition: filter var(--dur-slow) var(--ease);
-}
-.hero-img--a { object-position: center; animation: herofade 12s ease-in-out infinite; }
-.hero-img--b { object-position: 50% 18%; animation: herofade 12s ease-in-out infinite 6s; }
-@keyframes herofade {
-  0%   { opacity: 0; transform: scale(1); }
-  10%  { opacity: 1; }
-  45%  { opacity: 1; transform: scale(1.05); }
-  55%  { opacity: 1; }
-  100% { opacity: 0; transform: scale(1); }
 }
 .hero-scrim {
   position: absolute; inset: 0; pointer-events: none;
@@ -448,9 +439,6 @@ html.theme-fade *::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-img { animation: none !important; }
-  .hero-img--a { opacity: 1 !important; }
-  .hero-img--b { opacity: 0 !important; }
   html.theme-fade *, html.theme-fade *::before, html.theme-fade *::after { transition-duration: 0.01ms !important; }
 }
 

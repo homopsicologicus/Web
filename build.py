@@ -5,7 +5,7 @@ Uso:  python build.py   (regenera todos los .html en la carpeta del sitio)
 import os
 
 SITE = os.path.dirname(os.path.abspath(__file__))
-ASSET_VER = "handhold2"  # bump en cada cambio de estilos/js para romper caché
+ASSET_VER = "handhold3"  # bump en cada cambio de estilos/js para romper caché
 
 NAV = [
     ("index.html", "Inicio", ""),
@@ -42,8 +42,7 @@ def head(title, desc, current, preload_hero=False):
     preload = ""
     if preload_hero:
         preload = """
-  <link rel="preload" as="image" href="assets/img/hero-marble.webp?v={v}">
-  <link rel="preload" as="image" href="assets/img/carlos-portrait.webp?v={v}">""".format(v=ASSET_VER)
+  <link rel="preload" as="image" href="assets/img/hero-marble.webp?v={v}">""".format(v=ASSET_VER)
     return f"""<!doctype html>
 <html lang="es">
 <head>
@@ -136,8 +135,7 @@ def build_index():
     body = f"""
     <section id="top" class="hero">
       <div class="hero-media" aria-hidden="true">
-        <img class="hero-img hero-img--a" src="assets/img/hero-marble.webp?v={ASSET_VER}" alt="" width="1920" height="1072" fetchpriority="high">
-        <img class="hero-img hero-img--b" src="assets/img/carlos-portrait.webp?v={ASSET_VER}" alt="" width="1100" height="1971" loading="lazy">
+        <img class="hero-img" src="assets/img/hero-marble.webp?v={ASSET_VER}" alt="" width="1920" height="1072" fetchpriority="high">
         <div class="hero-scrim"></div>
       </div>
       <div class="container">
