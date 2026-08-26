@@ -5,7 +5,7 @@ Uso:  python build.py   (regenera todos los .html en la carpeta del sitio)
 import os
 
 SITE = os.path.dirname(os.path.abspath(__file__))
-ASSET_VER = "handhold4"  # bump en cada cambio de estilos/js para romper caché
+ASSET_VER = "handhold5"  # bump en cada cambio de estilos/js para romper caché
 
 NAV = [
     ("index.html", "Inicio", ""),
